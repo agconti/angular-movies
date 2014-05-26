@@ -80,10 +80,17 @@
               .data(data)
               .enter()
                 .append("text")
-                .attr("fill", "#fff")
-                .attr("y", function(d, i){return i * 35 + 22;})
-                .attr("x", 15)
-                .text(function(d){return d[scope.label];});
+                .attr("fill", "white")
+                .attr("y", function(d, i){
+                    return y(d.revenue);
+                }    )
+                .attr("x", function(d, i){
+                  return (width / data.length) * i;
+                })
+                .attr("transform", function(d, i) {
+                     return "rotate(90 "+((width / data.length) * i)+","+y(d.revenue)+")";
+                 })
+                .text(function(d){return d.title;});
 
           };
         }
