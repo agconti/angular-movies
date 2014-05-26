@@ -12,8 +12,8 @@
         },
         link: function(scope, iElement, iAttrs) {
           var svg = d3.select(iElement[0])
-              .append("svg")
-              .attr("width", "100%");
+                      .append("svg")
+                      .attr("width", "100%");
 
           // on window resize, re-render d3 canvas
           window.onresize = function() {
@@ -45,9 +45,9 @@
             max = 1500;
               // this can also be found dynamically when the data is not static
               // max = Math.max.apply(Math, _.map(data, ((val)-> val.count)))
-            var y = d3.scale.ordinal()
+            var y = d3.scale.linear()
                       .range([height, 0])
-                      .domain([0, d3.max(data, function(d) { return d.ranking; })]);
+                      .domain([0, d3.max(data, function(d) { return d.revenue; })]);
 
             // set the height based on the calculations above
             svg.attr('height', height);
@@ -59,19 +59,19 @@
                 .append("rect")
                 .on("click", function(d, i){return scope.onClick({item: d});})
                 .attr("height", function(d){
-                  return height - y(d.ranking);
+                  return (height - y(d.revenue)) * 5;
                 }) // height of each bar
                 .attr("width", 10) // initial width of 0 for transition
                 .attr("x", function(d, i){
                   return i * 35;
                 }) // half of the 20 side margin specified above
                 .attr("y", function(d, i){
-                    return y(d.ranking);
+                    return y(d.revenue);
                 }) // height + margin between bars
                 .transition()
                   .duration(1000) // time of duration
                   .attr("height", function(d){
-                    return d.ranking;
+                    return height - y(d.revenue);
                   }); // width based on scale
 
             svg.selectAll("text")

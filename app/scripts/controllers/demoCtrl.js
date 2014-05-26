@@ -7,7 +7,7 @@
       $scope.title = "Top Moives.";
       $scope.d3Data = movies;
       $scope.d3OnClick = function(item){
-        console.log(item.title);
+        console.log(item);
         $scope.movie = item;
         $scope.$apply();
       };
