@@ -40,7 +40,7 @@
             var width, height, max;
             width = d3.select(iElement[0])[0][0].offsetWidth - 20;
               // 20 is for margins and can be changed
-            height = scope.data.length;
+            height = 250;
               // 35 = 30(bar height) + 5(margin between bars)
             max = 1500;
               // this can also be found dynamically when the data is not static
@@ -61,9 +61,11 @@
                 .attr("height", function(d){
                   return (height - y(d.revenue)) * 5;
                 }) // height of each bar
-                .attr("width", 10) // initial width of 0 for transition
+                .attr("width", function(){
+                    return (width / data.length) - 1;
+                }) // initial width of 0 for transition
                 .attr("x", function(d, i){
-                  return i * 35;
+                  return (width / data.length) * i;
                 }) // half of the 20 side margin specified above
                 .attr("y", function(d, i){
                     return y(d.revenue);
