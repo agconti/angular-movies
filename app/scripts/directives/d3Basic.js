@@ -59,7 +59,7 @@
                 .append("rect")
                 .on("click", function(d, i){return scope.onClick({item: d});})
                 .attr("height", function(d){
-                  return (height - y(d.revenue)) * 5;
+                  return height - y(d.revenue) * 5;
                 }) // height of each bar
                 .attr("width", function(){
                     return (width / data.length) - 1;
@@ -80,9 +80,10 @@
               .data(data)
               .enter()
                 .append("text")
+                .on("click", function(d, i){return scope.onClick({item: d});})
                 .attr("fill", "white")
                 .attr("y", function(d, i){
-                    return y(d.revenue);
+                    return y(d.revenue) ;
                 }    )
                 .attr("x", function(d, i){
                   return (width / data.length) * i;
