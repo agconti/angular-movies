@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+angluar-movies
+==============
+
+A visualization of IMDB's movie database. 
+=======
 Integrating d3 and Angular
 ==========================
 There is a [github repo][1] with code to accompany this post.  Contributions are encouraged!
@@ -348,3 +354,4 @@ This and many other great sources of information are thanks to my time and conne
   [4]: http://www.ng-newsletter.com/posts/directives.html
   [5]: http://docs.angularjs.org/api/ng.$rootScope.Scope#$watch
   [6]: http://www.hackreactor.com
+>>>>>>> 97842f1055174306599f6d076fc860a417a0ac04
